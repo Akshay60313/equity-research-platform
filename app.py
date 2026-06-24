@@ -378,7 +378,7 @@ raw_growth    = (info.get('revenueGrowth') or 0.10) * 100
 actual_growth = float(round(max(min(raw_growth, 35.0), -20.0), 1))
 
 st.sidebar.header("Valuation Assumptions")
-wacc       = st.sidebar.slider("WACC (%)", 3.0, 15.0, 6.8, 0.1) / 100
+wacc       = st.sidebar.slider("WACC (%)", 3.0, 15.0, 8.9, 0.1) / 100
 terminal_g = st.sidebar.slider("Terminal Growth (%)", 0.0, 5.0, 2.0, 0.25) / 100
 tax_rate   = st.sidebar.slider("Tax Rate (%)", 0.0, 40.0, 21.0, 1.0) / 100
 
@@ -389,7 +389,7 @@ st.sidebar.caption("Year 1 pulled live (clamped at 35% max). Year 5 is your "
                   "between them.")
 
 yr1_growth = st.sidebar.slider("Year 1 Revenue Growth (%)", -20.0, 80.0, actual_growth, 1.0) / 100
-yr5_growth = st.sidebar.slider("Year 5 Revenue Growth (%)", 1.0, 30.0, 8.0, 1.0) / 100
+yr5_growth = st.sidebar.slider("Year 5 Revenue Growth (%)", 1.0, 30.0, 10.0, 1.0) / 100
 
 raw_margin    = actuals['ebitda_margin'] * 100
 yr1_margin = st.sidebar.slider(
@@ -398,7 +398,7 @@ yr1_margin = st.sidebar.slider(
 ) / 100
 yr5_margin = st.sidebar.slider(
     "Year 5 EBITDA Margin (%)", 0.0, 60.0,
-    float(round(min(max(raw_margin, 5.0) + 5.0, 60.0), 1)), 1.0
+    54.0, 1.0
 ) / 100
 
 st.sidebar.markdown("---")
@@ -418,7 +418,7 @@ wc_pct    = st.sidebar.slider("Working Capital Change (% of Revenue)", -50.0, 15
 
 st.sidebar.markdown("---")
 st.sidebar.subheader("5-Year Return Model")
-exit_multiple = st.sidebar.slider("Exit EV/EBITDA Multiple", 5.0, 60.0, 20.0, 1.0)
+exit_multiple = st.sidebar.slider("Exit EV/EBITDA Multiple", 5.0, 60.0, 15.0, 1.0)
 
 GROWTH_PATH = build_path(yr1_growth, yr5_growth)
 MARGIN_PATH = build_path(yr1_margin, yr5_margin)
